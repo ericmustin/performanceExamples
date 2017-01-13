@@ -1,0 +1,28 @@
+{
+  "name": "performance_examples",
+  "version": "1.0.0",
+  "description": "demonstration of web performance techniques",
+  "main": "index.js",
+  "scripts": {
+    "test": "test",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ericmustin/performanceExamples.git"
+  },
+  "author": "eric mustin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ericmustin/performanceExamples/issues"
+  },
+  "homepage": "https://github.com/ericmustin/performanceExamples#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-partials": "^0.3.0",
+    "mongodb": "^2.2.20",
+    "mongoose": "^4.7.6",
+    "request": "^2.79.0"
+  }
+}
