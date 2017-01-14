@@ -138,16 +138,10 @@ $(document).ready(function() {
                 return;
             }
             if (response.error === true) {
-                console.log('error 2');
                 return
             } else {
-                if (response.error) {
-                    console.log('error 3');
-                } else {
-                    console.log('success 1');
-                    console.log(response)
-                    $('#tester').replaceWith('<div class="col-6" id="tester" style="height:30%;">'+response+'</div>');
-                }
+                console.log(response)
+                $('#tester').replaceWith('<div class="col-6" id="tester" style="height:30%;">'+response+'</div>');
             }
         });
     });
@@ -169,7 +163,6 @@ $(document).ready(function() {
                 if (response.error) {
                     console.log('error 3');
                 } else {
-                    console.log('success 1');
                     console.log(response)
                     $('#tester').replaceWith('<div class="col-6" id="tester" style="height:30%;">'+response+'</div>');
                 }
