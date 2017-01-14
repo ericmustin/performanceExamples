@@ -103,9 +103,17 @@
         <div id="fixedHeader">
             <div class="col-12" id="titleContainer">
 
+                    <form id="calcTwo" action="index.html">
+                        <input type="text" id="symbol" value=1 />
+                        <input type="submit" value="Cache">
+                    </form>
+
+            </div>
+            <div class="col-12" id="titleContainer">
+
                     <form id="calc" action="index.html">
-                        <input type="text" id="symbol" value="QQQ" />
-                        <input type="submit" value="Search">
+                        <input type="text" id="symbol" value=1 />
+                        <input type="submit" value="No Cache">
                     </form>
 
             </div>
@@ -122,14 +130,14 @@ $(document).ready(function() {
     $('#calc').on('submit', function(event) {
         event.preventDefault();
         var data = $('#symbol')
-        $.post("/api", {
-            symbol: data[0].value
+        $.post("/api/noCache", {
+            key: data[0].value
         }).done(function(response, errorHandler) {
             if (errorHandler !== 'success') {
                 console.log('error 1');
                 return;
             }
-            if (JSON.parse(response).error === true) {
+            if (response.error === true) {
                 console.log('error 2');
                 return
             } else {
@@ -137,7 +145,31 @@ $(document).ready(function() {
                     console.log('error 3');
                 } else {
                     console.log('success 1');
-                    var response = JSON.parse(response);
+                    console.log(response)
+                    $('#tester').replaceWith('<div class="col-6" id="tester" style="height:30%;">'+response+'</div>');
+                }
+            }
+        });
+    });
+
+    $('#calcTwo').on('submit', function(event) {
+        event.preventDefault();
+        var data = $('#symbol')
+        $.post("/api/cache", {
+            key: data[0].value
+        }).done(function(response, errorHandler) {
+            if (errorHandler !== 'success') {
+                console.log('error 1');
+                return;
+            }
+            if (response.error === true) {
+                console.log('error 2');
+                return
+            } else {
+                if (response.error) {
+                    console.log('error 3');
+                } else {
+                    console.log('success 1');
                     console.log(response)
                     $('#tester').replaceWith('<div class="col-6" id="tester" style="height:30%;">'+response+'</div>');
                 }

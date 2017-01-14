@@ -2,12 +2,12 @@ var db = require('./config.js');
 
 var mongoose = require('mongoose');
 
-//some properties here aren't used in production at the moment such as pressure
-var nameSchema = new mongoose.Schema( {
-  firstName: String,
-  lastName: String
+//attributes
+var tupleSchema = new mongoose.Schema( {
+  key: String,
+  value: String
 } );
 
-var Name = mongoose.model('Name', nameSchema);
+var Tuple = mongoose.model('Tuple', tupleSchema);
 
-module.exports = Name;
+module.exports = Tuple;

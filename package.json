@@ -23,6 +23,7 @@
     "express-partials": "^0.3.0",
     "mongodb": "^2.2.20",
     "mongoose": "^4.7.6",
+    "redis": "^2.6.4",
     "request": "^2.79.0"
   }
 }
