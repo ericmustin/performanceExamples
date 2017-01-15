@@ -17,8 +17,14 @@ app.use(partials());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended: true }));
 
+
+//Example of setting max age header on static files
+
+//default max-age of 0
 app.use(express.static(__dirname+'/client'));
-console.log(__dirname)
+
+//max age of 60 seconds
+// app.use(express.static(__dirname+'/client', {maxAge: 60000 }));
 
 app.use('/api', router);
 routes(router);
