@@ -19,18 +19,19 @@ controller.getValueWithoutCache = function(req,res) {
 };
 
 controller.getValueWithCache = function(req,res) {
+  var key = req.body.key
+
   //Checks Redis for key before checking database
-  redis.get("key"+req.body.key,function(err,reply) {
+  redis.get("key"+key, function(err,reply) {
     if (err) {
       res.send(400, 'error')
     } else if (reply) {
 
       //The key exists in redis
       res.send(200, reply )
-
     } else {
       //The key doesn't exist so we hit the database
-      Tuple.find({key: req.body.key, value: '2' }).exec( function(err,result) {
+      Tuple.find( {key: key} ).exec( function(err,result) {
         if (err) {
           res.send(400, 'error')
         } else {
@@ -39,7 +40,7 @@ controller.getValueWithCache = function(req,res) {
           var informationForClient = expensiveOperation(result)
 
           //Set the key/value pair in redis so that it's available going forward
-          redis.set("key"+req.body.key, informationForClient, function() {
+          redis.set("key"+key, informationForClient, function() {
             res.send(200, informationForClient)
           });
         }

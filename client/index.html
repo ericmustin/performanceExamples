@@ -113,20 +113,18 @@
     <div class="row">
         <div id="fixedHeader">
             <div class="col-12" id="titleContainer">
-
-                    <form id="calcTwo" action="index.html">
-                        <input type="text" id="symbol" value=1 />
-                        <input type="submit" value="Cache">
-                    </form>
-
-            </div>
-            <div class="col-12" id="titleContainer">
-
                     <form id="calc" action="index.html">
                         <input type="text" id="symbol" value=1 />
                         <input type="submit" value="No Cache">
                     </form>
 
+            </div>
+            <div class="col-12" id="titleContainer">
+
+                    <form id="calcTwo" action="index.html">
+                        <input type="text" id="symbolTwo" value=1 />
+                        <input type="submit" value="Cache">
+                    </form>
             </div>
         </div>
         <div class="col-12">
@@ -138,9 +136,21 @@
 </body>
 <script type="text/javascript">
 $(document).ready(function() {
+    //check for existence of localstorage value, otherwise default to 1
+    var previousEntry = localStorage.getItem('lastEntry') || 1;
+    var previousEntryTwo = localStorage.getItem('lastEntryTwo') || 1;
+
+    //assign localstorage value or default value to element
+    $('#symbol').val(previousEntry)
+    $('#symbolTwo').val(previousEntryTwo)
+
     $('#calc').on('submit', function(event) {
         event.preventDefault();
         var data = $('#symbol')
+
+        //update local storage with new value
+        localStorage.setItem('lastEntry', data[0].value)
+
         $.post("/api/noCache", {
             key: data[0].value
         }).done(function(response, errorHandler) {
@@ -159,7 +169,11 @@ $(document).ready(function() {
 
     $('#calcTwo').on('submit', function(event) {
         event.preventDefault();
-        var data = $('#symbol')
+        var data = $('#symbolTwo')
+
+        //update local storage with new value
+        localStorage.setItem('lastEntryTwo', data[0].value)
+
         $.post("/api/cache", {
             key: data[0].value
         }).done(function(response, errorHandler) {
