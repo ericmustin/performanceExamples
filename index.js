@@ -1,6 +1,8 @@
 var express = require('express');
 var partials = require('express-partials');
 var bodyParser = require('body-parser');
+var responseTime = require('response-time')
+
 var controller = require('./controller/controller.js');
 
 
@@ -16,6 +18,7 @@ var routes = function(app) {
 app.use(partials());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded( { extended: true }));
+app.use(responseTime());
 
 
 //Example of setting max age header on static files
