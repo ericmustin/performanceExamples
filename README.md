@@ -21,7 +21,7 @@
 
 3. css media querys for image resizing
 
-  *from [developers.google.com](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization)
+  * from [developers.google.com](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/image-optimization)
 
    As a result, one of the simplest and most effective image optimization techniques is to ensure that we are not shipping any more pixels than needed to display the asset at its intended size in the browser. Sounds simple, right? Unfortunately, most pages fail this test for many of their image assets: typically, they ship larger assets and rely on the browser to rescale them - which also consumes extra CPU resources - and display them at a lower resolution.
 
