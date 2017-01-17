@@ -76,7 +76,7 @@
     </div>
     <div class="col-xs-12" id="responseTimeResults"> Response Time
         <div class="row">
-            <div class="col-xs-6-offset-xs-3" id="tester"></div>
+            <div class="col-xs-6 col-xs-offset-3" id="tester"></div>
         </div>
     </div>
     <div class="main col-xs-12">
@@ -110,7 +110,7 @@ $(document).ready(function() {
                 return
             } else {
                 var responseTime = response.getResponseHeader('X-Response-Time')
-                $('#tester').replaceWith('<div class="col-xs-6-offset-xs-3" id="tester">'+body+": "+responseTime+'</div>');
+                $('#tester').replaceWith('<div class="col-xs-6 col-xs-offset-3" id="tester">Cached?: '+body.wasCached+" <br> Result: "+body.data+"<br> Response Time: "+responseTime+'</div>');
             }
         });
     });
@@ -136,8 +136,8 @@ $(document).ready(function() {
                 if (body.error) {
                     console.log('error 3');
                 } else {
-                    var responseTime = response.getResponseHeader('X-Response-Time');
-                    $('#tester').replaceWith('<div class="col-xs-6-offset-xs-3" id="tester">'+body+": "+responseTime+'</div>');
+                    var responseTime = response.getResponseHeader('X-Response-Time')
+                    $('#tester').replaceWith('<div class="col-xs-6 col-xs-offset-3" id="tester">Cached?: '+body.wasCached+" <br> Result: "+body.data+"<br> Response Time: "+responseTime+'</div>');
                 }
             }
         });

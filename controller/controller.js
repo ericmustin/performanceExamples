@@ -13,7 +13,7 @@ controller.getValueWithoutCache = function(req,res) {
     } else {
       //Do lots of complicated math and stuff
       var informationForClient = expensiveOperation(result)
-      res.send(200, informationForClient)
+      res.send(200, {data: informationForClient, wasCached: false})
     }
   })
 };
@@ -28,7 +28,7 @@ controller.getValueWithCache = function(req,res) {
     } else if (reply) {
 
       //The key exists in redis
-      res.send(200, reply )
+      res.send(200, {data: reply, wasCached: true})
     } else {
       //The key doesn't exist so we hit the database
       Tuple.find( {key: key} ).exec( function(err,result) {
@@ -41,7 +41,9 @@ controller.getValueWithCache = function(req,res) {
 
           //Set the key/value pair in redis so that it's available going forward
           redis.set("key"+key, informationForClient, function() {
-            res.send(200, informationForClient)
+            //30 second expiry
+            redis.expire("key"+key, 30)
+            res.send(200, {data:informationForClient, wasCached: false })
           });
         }
       })
