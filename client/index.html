@@ -84,9 +84,27 @@
 </body>
 <script type="text/javascript">
 $(document).ready(function() {
+
+    //check whether localStorage exists from https://www.sitepoint.com/an-overview-of-the-web-storage-api/
+    function localStorageSupported() {
+     try {
+      return "localStorage" in window && window["localStorage"] !== null;
+     } catch (e) {
+      return false;
+     }
+    }
+
+    var hasLocalStorage = localStorageSupported();
+
+    if (hasLocalStorage === true) {
     //check for existence of localstorage value, otherwise default to 1
-    var previousEntry = localStorage.getItem('lastEntry') || 1;
-    var previousEntryTwo = localStorage.getItem('lastEntryTwo') || 1;
+        var previousEntry = localStorage.getItem('lastEntry') || 1;
+        var previousEntryTwo = localStorage.getItem('lastEntryTwo') || 1;
+
+    } else {
+        var previousEntry = 1;
+        var previousEntryTwo = 1;
+    }
 
     //assign localstorage value or default value to element
     $('#symbol').val(previousEntry)
@@ -97,7 +115,9 @@ $(document).ready(function() {
         var data = $('#symbol')
 
         //update local storage with new value
-        localStorage.setItem('lastEntry', data[0].value)
+        if (hasLocalStorage === true) {
+            localStorage.setItem('lastEntry', data[0].value)
+        }
 
         $.post("/api/noCache", {
             key: data[0].value
@@ -120,7 +140,9 @@ $(document).ready(function() {
         var data = $('#symbolTwo')
 
         //update local storage with new value
-        localStorage.setItem('lastEntryTwo', data[0].value)
+        if (hasLocalStorage ===true) {
+            localStorage.setItem('lastEntryTwo', data[0].value)
+        }
 
         $.post("/api/cache", {
             key: data[0].value
