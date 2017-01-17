@@ -5,6 +5,10 @@
 
   The basic implementations use node, expressjs, and jquery
 
+  Why is web performance important? Higher page load times have shown to reduce conversions for ecommerce sites and increase page abandonment
+
+  ![image](https://lh6.googleusercontent.com/kFPQshiiVt0Nua6ZHY1Oy5sP7jQFnrdwDjOOfrfiPxPE8fj8QvmMJAaTIFVeSNSGnJQ6gU4HE9S8Mrr-lAkiGoHvqekwVNO04601H1DDv-IEOlbapGKIPL2xTXE_hckqAP_VbI-O)
+
 1. Using redis to cache expensive database queries and operations(like an api call)
 
   * from [expressjs.com/en/advanced/best-practice-performance.html](https://expressjs.com/en/advanced/best-practice-performance.html)
