@@ -9,11 +9,15 @@
 
   ![image](https://lh6.googleusercontent.com/kFPQshiiVt0Nua6ZHY1Oy5sP7jQFnrdwDjOOfrfiPxPE8fj8QvmMJAaTIFVeSNSGnJQ6gU4HE9S8Mrr-lAkiGoHvqekwVNO04601H1DDv-IEOlbapGKIPL2xTXE_hckqAP_VbI-O)
 
-1. Using redis to cache expensive database queries and operations(like an api call)
+1. Using redis or memcached to cache complex database queries, memoize expensive functions and operations, or rate limit
 
   * from [expressjs.com/en/advanced/best-practice-performance.html](https://expressjs.com/en/advanced/best-practice-performance.html)
 
    > Since the app instances run as separate processes, they do not share the same memory space. That is, objects are local to each instance of the app. Therefore, you cannot maintain state in the application code. However, you can use an in-memory datastore like Redis to store session-related data and state. This caveat applies to essentially all forms of horizontal scaling, whether clustering with multiple processes or multiple physical servers.
+
+  * from [Reddit Engineering](https://redditblog.com/2017/1/17/caching-at-reddit/)
+
+   > One example of a random thing we use the cache for quite regularly is simply checking the things you’ve voted on recently when you load a page. When you vote, your vote isn’t instantly processed—instead, it’s placed into a queue. Depending on the backlog of the queue, this can mean if you were to vote and quickly refresh the page, your vote may not have been processed yet, and it would appear that your vote had been reverted. To get around this, we cache your recent votes for a short period of time to display them back to you until they’re processed.
 
 2. setting http response cache-headers on static assets for browser caching
 
