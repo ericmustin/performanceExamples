@@ -9,6 +9,11 @@
 
   ![image](https://lh6.googleusercontent.com/kFPQshiiVt0Nua6ZHY1Oy5sP7jQFnrdwDjOOfrfiPxPE8fj8QvmMJAaTIFVeSNSGnJQ6gU4HE9S8Mrr-lAkiGoHvqekwVNO04601H1DDv-IEOlbapGKIPL2xTXE_hckqAP_VbI-O)
 
+  ![imageTwo](https://d2av97idjaqjyo.cloudfront.net/wp-content/uploads/files/page-abandonment.png)
+
+
+###Examples implemented in this repo
+
 1. Using redis or memcached to cache complex database queries, memoize expensive functions and operations, or rate limit
 
   * from [expressjs.com/en/advanced/best-practice-performance.html](https://expressjs.com/en/advanced/best-practice-performance.html)
@@ -38,5 +43,13 @@
   * from [developer.mozilla.org](https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API)
 
    > The Web Storage API provides mechanisms by which browsers can store key/value pairs, in a much more intuitive fashion than using cookies.  localStorage maintains a separate storage area for each given origin that's available even when the browser is closed and reopened.
+
+5. use webpagetest to visualize your site's web performance and content breakdowns
+
+  * from [webpagetest.org](webpagetest.org)
+
+  > WebPageTest is an open source performance testing tool, maintained primarily by Google. It consists of one or multiple servers that act as web browsing robots, visiting websites and automatically collecting data about the experience in the form of a detailed performance report.
+
+  ![imageThree](https://blog.keycdn.com/blog/wp-content/uploads/2015/09/webpagetest-report.png)
 
 
