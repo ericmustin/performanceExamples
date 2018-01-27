@@ -1,5 +1,5 @@
 # performanceExamples
-##A few examples of different ways to improve web performance
+## A few examples of different ways to improve web performance
 
   These are a couple basic examples of methods to improve web performance and response times for a single page web application.
 
@@ -12,7 +12,7 @@
   ![imageTwo](https://d2av97idjaqjyo.cloudfront.net/wp-content/uploads/files/page-abandonment.png)
 
 
-###Examples implemented in this repo
+### Examples implemented in this repo
 
 1. Using redis or memcached to cache complex database queries, memoize expensive functions and operations, or rate limit
 
